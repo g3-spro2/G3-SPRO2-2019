@@ -1,3 +1,12 @@
+/*
+M1:Claw 1
+M2:Claw 2
+M3:Claw 3
+M4:Body 1
+M5:Body 2
+CCW:Extend/Open
+CW:Retract/Close
+*/
 #define F_CPU 16E6
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -14,16 +23,25 @@ int adc_read(unsigned char);
 void adc_init();
 void sensors_init();
 void interrupt_init();
+void error_stop_all();
 
 //Variable declarations
-unsigned char state = 0, direction = 0;
+unsigned char state = 1, direction = 0;									//Direction 1:Forward 0:Backward
 volatile unsigned char proxym1=0;										//0 if the proximity sensor did not detect anything, 1 if it does
 volatile unsigned char proxym2=0;
 volatile unsigned char proxym3=0;
+volatile unsigned char edge1 = 0;
+volatile unsigned char edge2 = 0;
+int desired_closed_claw_angle1 = 512;
+int desired_closed_claw_angle2 = 512;
+int desired_closed_claw_angle3 = 512;
+int desired_open_claw_angle1 = 512;
+int desired_open_claw_angle2 = 512;
+int desired_open_claw_angle3 = 512;
 
-#define POT1 0															//Addresses to the potentiometers for the adc_read function. Potentiometer 1 connected to pin PC0, 2 to PC1, 3 to PC2
-#define POT2 1
-#define POT3 2
+#define claw_angle1 0															//Addresses to the potentiometers for the adc_read function. Potentiometer 1 connected to pin PC0, 2 to PC1, 3 to PC2
+#define claw_angle2 1
+#define claw_angle3 2
 
 int main(void)
 {
@@ -33,46 +51,182 @@ int main(void)
 	motor_init_pwm(PWM_FREQUENCY_1500);
 	interrupt_init();
 	sensors_init();
+	
+	motor_set_state(M1,STOP);
+	motor_set_state(M2,STOP);
+	motor_set_state(M3,STOP);
+	motor_set_state(M4,STOP);
+	motor_set_state(M5,STOP);
 
 	while(1)
 	{
-		
 		switch(direction)
 		{
-			case 0:			//Forwards
-			switch(state)
-			{
-				case 0:		//Extending body 1
-				//if no bar found retract body 1 back, direction++
-				
-				
-				break;
-				case 1:		//Moving middle body
-				//If no bar is found go back while checking, if bar is still not found, send error message somehow
-				
-				
-				break;
-				case 2:		//Retracting body 3
-				//If no bar is found go back while checking, if bar is still not found, send error message somehow
-				
-				break;
-			}
+			case 1:		//State 1
+				if (direction)
+				{
+					motor_set_state(M1,CCW);
+					motor_set_pwm(M1,0,0x1FF);
+					while (adc_read(claw_angle1)>desired_closed_claw_angle1);
+					motor_set_state(M1,BRAKE);
+					
+					motor_set_state(M4,CCW);
+					motor_set_pwm(M4,0,0x1FF);
+					
+					while (!(proxym1||edge1||edge2));
+					
+					if (proxym1)
+					{
+						motor_set_state(M4,BRAKE);
+						motor_set_state(M1,CW);
+						motor_set_pwm(M1,0,0x1FF);
+						while (adc_read(claw_angle1)<desired_open_claw_angle1);
+						motor_set_state(M1,BRAKE);
+						state = 2;
+					} 
+					else if (edge1)
+					{
+						motor_set_state(M4,CW);
+						motor_set_pwm(M4,0,0x1FF);
+						while (!(proxym1||edge1||edge2));
+						if (proxym1)
+						{
+							motor_set_state(M4,BRAKE);
+							motor_set_state(M1,CW);
+							motor_set_pwm(M1,0,0x1FF);
+							direction = 0;
+						} 
+						else if (edge1){error_stop_all();}
+					}
+				}
+				else if (!direction)
+				{
+					motor_set_state(M3,CCW);
+					motor_set_pwm(M3,0,0x1FF);
+					while (adc_read(claw_angle3)>desired_closed_claw_angle3);
+					motor_set_state(M3,BRAKE);
+					
+					motor_set_state(M5,CCW);
+					motor_set_pwm(M5,0,0x1FF);
+					
+					while (!(proxym3||edge1||edge2));
+					
+					if (proxym3)
+					{
+						motor_set_state(M5,BRAKE);
+						motor_set_state(M3,CW);
+						motor_set_pwm(M3,0,0x1FF);
+						while (adc_read(claw_angle3)<desired_open_claw_angle3);
+						motor_set_state(M3,BRAKE);
+						state = 2;
+					}
+					else if (edge1)
+					{
+						motor_set_state(M5,CW);
+						motor_set_pwm(M5,0,0x1FF);
+						while (!(proxym3||edge1||edge2));
+						if (proxym3)
+						{
+							motor_set_state(M5,BRAKE);
+							motor_set_state(M3,CW);
+							motor_set_pwm(M3,0,0x1FF);
+							direction = 0;
+						}
+						else if (edge1||edge2){error_stop_all();}
+					}
+				}
 			break;
-			case 1:				//Backwards
-			switch(state)
+
+			case 2:		//State 2
+				motor_set_state(M2,CCW);
+				motor_set_pwm(M2,0,0x1FF);
+				while (adc_read(claw_angle2)<desired_open_claw_angle2);
+				motor_set_state(M2,BRAKE);
+				
+				if (direction)
+				{
+					motor_set_state(M5,CCW);
+					motor_set_pwm(M5,0,0x1FF);	
+					motor_set_state(M4,CW);
+					motor_set_pwm(M4,0,0x1FF);
+				}
+				else if (!direction)
+				{
+					motor_set_state(M5,CW);
+					motor_set_pwm(M5,0,0x1FF);
+					motor_set_state(M4,CCW);
+					motor_set_pwm(M4,0,0x1FF);
+				}
+				while (!(proxym2||edge1||edge2));
+
+				if (proxym2)
+				{
+					motor_set_state(M4,BRAKE);
+					motor_set_state(M5,BRAKE);
+					motor_set_state(M2,CW);
+					motor_set_pwm(M2,0,0x1FF);
+					while (adc_read(claw_angle2)>desired_closed_claw_angle2);
+					motor_set_state(M2,BRAKE);
+					state = 3;
+				} 
+				else if (edge1||edge2)
+				{
+					error_stop_all();
+				}
+			break;
+			
+			case 3:		//State 3
+			if (direction)
 			{
-				case 0:			//Extending body 3
-				//if no bar found retract body 3 back, direction++
+				motor_set_state(M3,CCW);
+				motor_set_pwm(M3,0,0x1FF);
+				while (adc_read(claw_angle3)<desired_open_claw_angle3);
+				motor_set_state(M3,BRAKE);
 				
-				break;
-				case 1: //Moving middle body
-				//If no bar is found go back while checking, if bar is still not found, send error message somehow
+				motor_set_state(M5,CW);
+				motor_set_pwm(M5,0,0x1FF);
 				
-				break;
-				case 2: //Retracting body 1
-				//If no bar is found go back while checking, if bar is still not found, send error message somehow
+				while (!(proxym3||edge1||edge2));
 				
-				break;
+				if (proxym3)
+				{
+					motor_set_state(M5,BRAKE);
+					motor_set_state(M3,CW);
+					motor_set_pwm(M3,0,0x1FF);
+					while(adc_read(claw_angle3)>desired_closed_claw_angle3);
+					motor_set_state(M3,BRAKE);
+					state = 1;
+				} 
+				else if()
+				{
+					error_stop_all();
+				}
+			}
+			else if (!direction)
+			{
+				motor_set_state(M1,CCW);
+				motor_set_pwm(M1,0,0x1FF);
+				while (adc_read(claw_angle1)<desired_open_claw_angle1);
+				motor_set_state(M1,BRAKE);
+				
+				motor_set_state(M4,CW);
+				motor_set_pwm(M4,0,0x1FF);
+				
+				while (!(proxym1||edge1||edge2));
+				
+				if (proxym1)
+				{
+					motor_set_state(M4,BRAKE);
+					motor_set_state(M1,CW);
+					motor_set_pwm(M1,0,0x1FF);
+					while(adc_read(claw_angle1)>desired_closed_claw_angle1);
+					motor_set_state(M1,BRAKE);
+					state = 1;
+				}
+				else if()
+				{
+					error_stop_all();
+				}
 			}
 			break;
 		}
@@ -97,14 +251,15 @@ void adc_init(){														//Setting up the ADC
 }
 
 void interrupt_init(){													//Setup for the interrupt(s) (PCINT2 external interrupt only right now)
-	PCICR |= (1<<PCIE2);												//Set PCIE2 to 1 if the external interrupt will be on PCINT[23:16]
 	PCMSK2 |= 0xF0;														//(0xFC) Setting up all the pins on portD (PCINT[23:16]) as an interrupt, except the first two (PCINT[17:16])
+	PCICR |= (1<<PCIE2);												//Set PCIE2 to 1 if the external interrupt will be on PCINT[23:16]
 	sei();																//Setting the SREG I-flag
 }
 
 void sensors_init(){													//Initializing the sensor pins
-	DDRD &= ~(1<<PORTD2 | 1<<PORTD3 | 1<<PORTD4);						//Connecting Proximity sensors 1,2,3 to PD2,3,4 (no need for pull up or down resistor here)
-	DDRD &= ~(1<<PORTD5 | 1<<PORTD6);									//Connecting the 2 Buttons to PD5,6
+	DDRD &= ~(1<<PORTD4 | 1<<PORTD5 | 1<<PORTD6);						//Connecting Proximity sensors 1,2,3 to PD4,5,6 (no need for pull up or down resistor here)
+	DDRD &= ~(1<<PORTD2 | 1<<PORTD3);									//Connecting the 2 Buttons to PD5,6
+	PORTD |= 0xFF;														//Pullup resistors for all pin on portD
 	//TODO: Do we need pull up or pull down resistor for the 2 switches?
 }
 
@@ -119,4 +274,13 @@ ISR(PCINT2_vect){														//Interrupt for the sensor readings (They have to
 	else{proxym3 = 0;}
 	
 	//TODO: Logic for switches
+}
+
+void error_stop_all(){
+	motor_set_state(M1,BRAKE);
+	motor_set_state(M2,BRAKE);
+	motor_set_state(M3,BRAKE);
+	motor_set_state(M4,BRAKE);
+	motor_set_state(M5,BRAKE);
+	while(1);
 }
