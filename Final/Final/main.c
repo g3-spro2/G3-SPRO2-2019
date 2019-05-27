@@ -253,6 +253,8 @@ void adc_init(){														//Setting up the ADC
 void interrupt_init(){													//Setup for the interrupt(s) (PCINT2 external interrupt only right now)
 	PCMSK2 |= 0xF0;														//(0xFC) Setting up all the pins on portD (PCINT[23:16]) as an interrupt, except the first two (PCINT[17:16])
 	PCICR |= (1<<PCIE2);												//Set PCIE2 to 1 if the external interrupt will be on PCINT[23:16]
+	EICRA |= (1<<ISC10 | 1<<ISC00);										//Set up INT0 and INT1 (PD2,PD3) as external interrupts
+	EIMSK |= (1<<INT0 | 1<<INT1);										//Enabling INT0 and INT1 interrupts
 	sei();																//Setting the SREG I-flag
 }
 
@@ -264,16 +266,24 @@ void sensors_init(){													//Initializing the sensor pins
 }
 
 ISR(PCINT2_vect){														//Interrupt for the sensor readings (They have to be connected from PD0-PD7)
-	if (~PIND & (1 << PIND2)) {proxym1 = 1;}							//If the voltage gets pulled down, it means that the proximity sensor senses something
+	if (~PIND & (1 << PIND4)) {proxym1 = 1;}							//If the voltage gets pulled down, it means that the proximity sensor senses something
 	else{proxym1 = 0;}
 
-	if (~PIND & (1 << PIND3)) {proxym2 = 1;}
+	if (~PIND & (1 << PIND5)) {proxym2 = 1;}
 	else{proxym2 = 0;}
 
-	if (~PIND & (1 << PIND4)) {proxym3 = 1;}
+	if (~PIND & (1 << PIND6)) {proxym3 = 1;}
 	else{proxym3 = 0;}
-	
-	//TODO: Logic for switches
+}
+
+ISR(INT0_vect){															//Interrupt for edge detection 1
+	if (~PIND & (1 << PIND2)) {edge1 = 1;}
+	else{edge1 = 0;}
+}
+
+ISR(INT1_vect){															//Interrupt for edge detection 2
+	if (~PIND & (1 << PIND3)) {edge2 = 1;}
+	else{edge2 = 0;}
 }
 
 void error_stop_all(){
