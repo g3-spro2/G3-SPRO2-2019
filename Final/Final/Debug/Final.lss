@@ -1,0 +1,1584 @@
+
+Final.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000010  00800100  000008c0  00000954  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000008c0  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000000e  00800110  00800110  00000964  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000964  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000994  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000168  00000000  00000000  000009d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001aea  00000000  00000000  00000b3c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000ae5  00000000  00000000  00002626  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000d66  00000000  00000000  0000310b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000002fc  00000000  00000000  00003e74  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006c1  00000000  00000000  00004170  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000ded  00000000  00000000  00004831  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000128  00000000  00000000  0000561e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 44 00 	jmp	0x88	; 0x88 <__ctors_end>
+   4:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+   8:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+   c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  10:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  14:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  18:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  1c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  20:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  24:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  28:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  2c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  30:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  34:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  38:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  3c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  40:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  44:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  48:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  4c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  50:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  54:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  58:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  5c:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  60:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  64:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__bad_interrupt>
+  68:	7e 03       	fmul	r23, r22
+  6a:	1b 03       	fmul	r17, r19
+  6c:	81 03       	fmuls	r16, r17
+  6e:	1e 03       	fmul	r17, r22
+  70:	78 03       	fmul	r23, r16
+  72:	18 03       	fmul	r17, r16
+  74:	7b 03       	fmul	r23, r19
+  76:	21 03       	mulsu	r18, r17
+  78:	a2 03       	fmuls	r18, r18
+  7a:	a7 03       	fmuls	r18, r23
+  7c:	ac 03       	fmulsu	r18, r20
+  7e:	b1 03       	fmuls	r19, r17
+  80:	b6 03       	fmuls	r19, r22
+  82:	bb 03       	fmulsu	r19, r19
+  84:	c0 03       	fmuls	r20, r16
+  86:	c5 03       	fmuls	r20, r21
+
+00000088 <__ctors_end>:
+  88:	11 24       	eor	r1, r1
+  8a:	1f be       	out	0x3f, r1	; 63
+  8c:	cf ef       	ldi	r28, 0xFF	; 255
+  8e:	d8 e0       	ldi	r29, 0x08	; 8
+  90:	de bf       	out	0x3e, r29	; 62
+  92:	cd bf       	out	0x3d, r28	; 61
+
+00000094 <__do_copy_data>:
+  94:	11 e0       	ldi	r17, 0x01	; 1
+  96:	a0 e0       	ldi	r26, 0x00	; 0
+  98:	b1 e0       	ldi	r27, 0x01	; 1
+  9a:	e0 ec       	ldi	r30, 0xC0	; 192
+  9c:	f8 e0       	ldi	r31, 0x08	; 8
+  9e:	02 c0       	rjmp	.+4      	; 0xa4 <__do_copy_data+0x10>
+  a0:	05 90       	lpm	r0, Z+
+  a2:	0d 92       	st	X+, r0
+  a4:	a0 31       	cpi	r26, 0x10	; 16
+  a6:	b1 07       	cpc	r27, r17
+  a8:	d9 f7       	brne	.-10     	; 0xa0 <__do_copy_data+0xc>
+
+000000aa <__do_clear_bss>:
+  aa:	21 e0       	ldi	r18, 0x01	; 1
+  ac:	a0 e1       	ldi	r26, 0x10	; 16
+  ae:	b1 e0       	ldi	r27, 0x01	; 1
+  b0:	01 c0       	rjmp	.+2      	; 0xb4 <.do_clear_bss_start>
+
+000000b2 <.do_clear_bss_loop>:
+  b2:	1d 92       	st	X+, r1
+
+000000b4 <.do_clear_bss_start>:
+  b4:	ae 31       	cpi	r26, 0x1E	; 30
+  b6:	b2 07       	cpc	r27, r18
+  b8:	e1 f7       	brne	.-8      	; 0xb2 <.do_clear_bss_loop>
+  ba:	0e 94 ce 01 	call	0x39c	; 0x39c <main>
+  be:	0c 94 5e 04 	jmp	0x8bc	; 0x8bc <_exit>
+
+000000c2 <__bad_interrupt>:
+  c2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000c6 <lcd_load_byte>:
+ *
+ * Parameters: out_byte   The byte to load into the shift register
+*/
+void lcd_load_byte(uint8_t out_byte)
+{
+	LCD_PORT &= ~_BV(LCD_CLOCK_PIN);		// CLK = 0
+  c6:	2c 98       	cbi	0x05, 4	; 5
+  c8:	98 e0       	ldi	r25, 0x08	; 8
+	for(unsigned char i=0; i<8; i++)		// 8 shift reg. bits
+	{
+		if (out_byte & 0x80)				// bit high
+  ca:	88 23       	and	r24, r24
+  cc:	14 f4       	brge	.+4      	; 0xd2 <lcd_load_byte+0xc>
+			LCD_PORT |=_BV(LCD_RSDS_PIN); 
+  ce:	2d 9a       	sbi	0x05, 5	; 5
+  d0:	01 c0       	rjmp	.+2      	; 0xd4 <lcd_load_byte+0xe>
+		else
+			LCD_PORT &= ~_BV(LCD_RSDS_PIN);	// bit low
+  d2:	2d 98       	cbi	0x05, 5	; 5
+		out_byte = out_byte << 1;
+  d4:	88 0f       	add	r24, r24
+		LCD_PORT |= _BV(LCD_CLOCK_PIN);		// strobe CLK
+  d6:	2c 9a       	sbi	0x05, 4	; 5
+		LCD_PORT &= ~_BV(LCD_CLOCK_PIN);
+  d8:	2c 98       	cbi	0x05, 4	; 5
+  da:	91 50       	subi	r25, 0x01	; 1
+ * Parameters: out_byte   The byte to load into the shift register
+*/
+void lcd_load_byte(uint8_t out_byte)
+{
+	LCD_PORT &= ~_BV(LCD_CLOCK_PIN);		// CLK = 0
+	for(unsigned char i=0; i<8; i++)		// 8 shift reg. bits
+  dc:	b1 f7       	brne	.-20     	; 0xca <lcd_load_byte+0x4>
+			LCD_PORT &= ~_BV(LCD_RSDS_PIN);	// bit low
+		out_byte = out_byte << 1;
+		LCD_PORT |= _BV(LCD_CLOCK_PIN);		// strobe CLK
+		LCD_PORT &= ~_BV(LCD_CLOCK_PIN);
+	}
+}
+  de:	08 95       	ret
+
+000000e0 <strobe_E>:
+
+/* Strobes the E signal on the LCD to read the byte from the 74HC164. */
+void strobe_E(void)
+{
+	LCD_PORT |= _BV(LCD_ENABLE_PIN);		// E = 1
+  e0:	28 9a       	sbi	0x05, 0	; 5
+	LCD_PORT |= _BV(LCD_ENABLE_PIN);		// E = 1 twice to extend pulse
+  e2:	28 9a       	sbi	0x05, 0	; 5
+	LCD_PORT &= ~_BV(LCD_ENABLE_PIN);		// E = 0
+  e4:	28 98       	cbi	0x05, 0	; 5
+  e6:	08 95       	ret
+
+000000e8 <displayControl>:
+}
+
+void displayControl(uint8_t cmd_byte)
+{
+	lcd_load_byte(cmd_byte);
+  e8:	0e 94 63 00 	call	0xc6	; 0xc6 <lcd_load_byte>
+	LCD_PORT &= ~_BV(LCD_RSDS_PIN);  // RS = 0
+  ec:	2d 98       	cbi	0x05, 5	; 5
+	strobe_E();
+  ee:	0e 94 70 00 	call	0xe0	; 0xe0 <strobe_E>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f2:	85 ed       	ldi	r24, 0xD5	; 213
+  f4:	8a 95       	dec	r24
+  f6:	f1 f7       	brne	.-4      	; 0xf4 <displayControl+0xc>
+  f8:	00 00       	nop
+  fa:	08 95       	ret
+
+000000fc <lcd_putc>:
+ * Loads the byte into the shift register and then sends it to the LCD as a char
+ * Parameters:   c               The byte (character) to display
+*/
+void lcd_putc( char c)
+{
+	lcd_load_byte(c);
+  fc:	0e 94 63 00 	call	0xc6	; 0xc6 <lcd_load_byte>
+	LCD_PORT |= _BV(LCD_RSDS_PIN);		// RS = 1
+ 100:	2d 9a       	sbi	0x05, 5	; 5
+	strobe_E();
+ 102:	0e 94 70 00 	call	0xe0	; 0xe0 <strobe_E>
+ 106:	8a ee       	ldi	r24, 0xEA	; 234
+ 108:	8a 95       	dec	r24
+ 10a:	f1 f7       	brne	.-4      	; 0x108 <lcd_putc+0xc>
+ 10c:	00 c0       	rjmp	.+0      	; 0x10e <lcd_putc+0x12>
+ 10e:	08 95       	ret
+
+00000110 <putchr>:
+/* putchr provides an interface to avr gcc stdio stdout to be used
+   for formatted output with printf
+*/
+int putchr(char c, FILE *stream)
+{
+	lcd_putc(c);
+ 110:	0e 94 7e 00 	call	0xfc	; 0xfc <lcd_putc>
+ 	return 0;	
+}
+ 114:	80 e0       	ldi	r24, 0x00	; 0
+ 116:	90 e0       	ldi	r25, 0x00	; 0
+ 118:	08 95       	ret
+
+0000011a <lcd_home>:
+
+/* Moves the cursor to the home position. */
+void lcd_home()
+{
+	displayControl(0x02);
+ 11a:	82 e0       	ldi	r24, 0x02	; 2
+ 11c:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 120:	8f e3       	ldi	r24, 0x3F	; 63
+ 122:	9f e1       	ldi	r25, 0x1F	; 31
+ 124:	01 97       	sbiw	r24, 0x01	; 1
+ 126:	f1 f7       	brne	.-4      	; 0x124 <lcd_home+0xa>
+ 128:	00 c0       	rjmp	.+0      	; 0x12a <lcd_home+0x10>
+ 12a:	00 00       	nop
+ 12c:	08 95       	ret
+
+0000012e <lcd_init>:
+	_delay_us(40);					// default "after command" delay
+}
+
+void lcd_init()
+{
+  DDRB = 0x31;
+ 12e:	81 e3       	ldi	r24, 0x31	; 49
+ 130:	84 b9       	out	0x04, r24	; 4
+	stdout = &mystdout;		// address of stdout 
+ 132:	80 e0       	ldi	r24, 0x00	; 0
+ 134:	91 e0       	ldi	r25, 0x01	; 1
+ 136:	90 93 1b 01 	sts	0x011B, r25	; 0x80011b <__iob+0x3>
+ 13a:	80 93 1a 01 	sts	0x011A, r24	; 0x80011a <__iob+0x2>
+ 13e:	2f ef       	ldi	r18, 0xFF	; 255
+ 140:	86 e7       	ldi	r24, 0x76	; 118
+ 142:	91 e0       	ldi	r25, 0x01	; 1
+ 144:	21 50       	subi	r18, 0x01	; 1
+ 146:	80 40       	sbci	r24, 0x00	; 0
+ 148:	90 40       	sbci	r25, 0x00	; 0
+ 14a:	e1 f7       	brne	.-8      	; 0x144 <lcd_init+0x16>
+ 14c:	00 c0       	rjmp	.+0      	; 0x14e <lcd_init+0x20>
+ 14e:	00 00       	nop
+	_delay_ms(30);			// 30ms power on delay for the DEM20231 LCD
+	displayControl(0x38);	// display off
+ 150:	88 e3       	ldi	r24, 0x38	; 56
+ 152:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+	displayControl(0x08);	// display off
+ 156:	88 e0       	ldi	r24, 0x08	; 8
+ 158:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+	displayControl(0x01);	// Clear display
+ 15c:	81 e0       	ldi	r24, 0x01	; 1
+ 15e:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+ 162:	8f e3       	ldi	r24, 0x3F	; 63
+ 164:	9f e1       	ldi	r25, 0x1F	; 31
+ 166:	01 97       	sbiw	r24, 0x01	; 1
+ 168:	f1 f7       	brne	.-4      	; 0x166 <lcd_init+0x38>
+ 16a:	00 c0       	rjmp	.+0      	; 0x16c <lcd_init+0x3e>
+ 16c:	00 00       	nop
+	_delay_ms(2);			// 2ms clear LCD delay for the DEM20231 LCD	
+	displayControl(0x06);	// entry mode set
+ 16e:	86 e0       	ldi	r24, 0x06	; 6
+ 170:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+	lcd_home();				// cursor home
+ 174:	0e 94 8d 00 	call	0x11a	; 0x11a <lcd_home>
+	displayControl(0x0C);	// display ON
+ 178:	8c e0       	ldi	r24, 0x0C	; 12
+ 17a:	0e 94 74 00 	call	0xe8	; 0xe8 <displayControl>
+ 17e:	08 95       	ret
+
+00000180 <adc_read>:
+	return 0;
+}
+
+
+int adc_read(unsigned char adc_channel){
+	ADMUX &= 0xF0;														//Clear any previously used channel, but keep internal reference
+ 180:	ec e7       	ldi	r30, 0x7C	; 124
+ 182:	f0 e0       	ldi	r31, 0x00	; 0
+ 184:	90 81       	ld	r25, Z
+ 186:	90 7f       	andi	r25, 0xF0	; 240
+ 188:	90 83       	st	Z, r25
+	ADMUX |= adc_channel;												//Set the desired channel
+ 18a:	90 81       	ld	r25, Z
+ 18c:	89 2b       	or	r24, r25
+ 18e:	80 83       	st	Z, r24
+	ADCSRA |= (1<<ADSC);												//Start a conversion
+ 190:	ea e7       	ldi	r30, 0x7A	; 122
+ 192:	f0 e0       	ldi	r31, 0x00	; 0
+ 194:	80 81       	ld	r24, Z
+ 196:	80 64       	ori	r24, 0x40	; 64
+ 198:	80 83       	st	Z, r24
+	while ( (ADCSRA & (1<<ADSC)) );										//Now wait for the conversion to complete
+ 19a:	80 81       	ld	r24, Z
+ 19c:	86 fd       	sbrc	r24, 6
+ 19e:	fd cf       	rjmp	.-6      	; 0x19a <adc_read+0x1a>
+	return ADC;															//Now we have the result, so we return it to the calling function as a 16 bit unsigned int
+ 1a0:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7e0078>
+ 1a4:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7e0079>
+
+}
+ 1a8:	08 95       	ret
+
+000001aa <adc_init>:
+
+void adc_init(){														//Setting up the ADC
+	ADMUX = (1<<REFS0);													// Select Vref = AVcc
+ 1aa:	80 e4       	ldi	r24, 0x40	; 64
+ 1ac:	80 93 7c 00 	sts	0x007C, r24	; 0x80007c <__TEXT_REGION_LENGTH__+0x7e007c>
+	ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0)|(1<<ADEN);				//set prescaler to 128 (because we want 10bit resolution, and it requires clock frequency between 50kHz and 200kHz) and turn on the ADC module
+ 1b0:	87 e8       	ldi	r24, 0x87	; 135
+ 1b2:	80 93 7a 00 	sts	0x007A, r24	; 0x80007a <__TEXT_REGION_LENGTH__+0x7e007a>
+ 1b6:	08 95       	ret
+
+000001b8 <interrupt_init>:
+}
+
+void interrupt_init(){													//Setup for the interrupt(s) (PCINT2 external interrupt only right now)
+	PCMSK2 |= 0xF0;														//(0xFC) Setting up all the pins on portD (PCINT[23:16]) as an interrupt, except the first two (PCINT[17:16])
+ 1b8:	ed e6       	ldi	r30, 0x6D	; 109
+ 1ba:	f0 e0       	ldi	r31, 0x00	; 0
+ 1bc:	80 81       	ld	r24, Z
+ 1be:	80 6f       	ori	r24, 0xF0	; 240
+ 1c0:	80 83       	st	Z, r24
+	PCICR |= (1<<PCIE2);												//Set PCIE2 to 1 if the external interrupt will be on PCINT[23:16]
+ 1c2:	e8 e6       	ldi	r30, 0x68	; 104
+ 1c4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c6:	80 81       	ld	r24, Z
+ 1c8:	84 60       	ori	r24, 0x04	; 4
+ 1ca:	80 83       	st	Z, r24
+	EICRA |= (1<<ISC10 | 1<<ISC00);										//Set up INT0 and INT1 (PD2,PD3) as external interrupts
+ 1cc:	e9 e6       	ldi	r30, 0x69	; 105
+ 1ce:	f0 e0       	ldi	r31, 0x00	; 0
+ 1d0:	80 81       	ld	r24, Z
+ 1d2:	85 60       	ori	r24, 0x05	; 5
+ 1d4:	80 83       	st	Z, r24
+	EIMSK |= (1<<INT0 | 1<<INT1);										//Enabling INT0 and INT1 interrupts
+ 1d6:	8d b3       	in	r24, 0x1d	; 29
+ 1d8:	83 60       	ori	r24, 0x03	; 3
+ 1da:	8d bb       	out	0x1d, r24	; 29
+	sei();																//Setting the SREG I-flag
+ 1dc:	78 94       	sei
+ 1de:	08 95       	ret
+
+000001e0 <sensors_init>:
+}
+
+void sensors_init(){													//Initializing the sensor pins
+	DDRD &= ~(1<<PORTD4 | 1<<PORTD5 | 1<<PORTD6);						//Connecting Proximity sensors 1,2,3 to PD4,5,6 (no need for pull up or down resistor here)
+ 1e0:	8a b1       	in	r24, 0x0a	; 10
+ 1e2:	8f 78       	andi	r24, 0x8F	; 143
+ 1e4:	8a b9       	out	0x0a, r24	; 10
+	DDRD &= ~(1<<PORTD2 | 1<<PORTD3);									//Connecting the 2 Buttons to PD5,6
+ 1e6:	8a b1       	in	r24, 0x0a	; 10
+ 1e8:	83 7f       	andi	r24, 0xF3	; 243
+ 1ea:	8a b9       	out	0x0a, r24	; 10
+	PORTD |= 0xFF;														//Pullup resistors for all pin on portD
+ 1ec:	8b b1       	in	r24, 0x0b	; 11
+ 1ee:	8f ef       	ldi	r24, 0xFF	; 255
+ 1f0:	8b b9       	out	0x0b, r24	; 11
+ 1f2:	08 95       	ret
+
+000001f4 <stop_retracting_error>:
+	//TODO: Do we need pull up or pull down resistor for the 2 switches?
+}
+
+void stop_retracting_error(){
+	motor_set_state(M1,BRAKE);
+ 1f4:	63 e0       	ldi	r22, 0x03	; 3
+ 1f6:	81 e0       	ldi	r24, 0x01	; 1
+ 1f8:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M2,BRAKE);
+ 1fc:	63 e0       	ldi	r22, 0x03	; 3
+ 1fe:	82 e0       	ldi	r24, 0x02	; 2
+ 200:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M3,BRAKE);
+ 204:	63 e0       	ldi	r22, 0x03	; 3
+ 206:	83 e0       	ldi	r24, 0x03	; 3
+ 208:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M4,BRAKE);
+ 20c:	63 e0       	ldi	r22, 0x03	; 3
+ 20e:	84 e0       	ldi	r24, 0x04	; 4
+ 210:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M5,BRAKE);
+ 214:	63 e0       	ldi	r22, 0x03	; 3
+ 216:	85 e0       	ldi	r24, 0x05	; 5
+ 218:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+ 21c:	ff cf       	rjmp	.-2      	; 0x21c <stop_retracting_error+0x28>
+
+0000021e <open_claws_on_body_x>:
+	while(1);
+}
+
+void open_claws_on_body_x(unsigned char x, unsigned int speed){
+ 21e:	ef 92       	push	r14
+ 220:	ff 92       	push	r15
+ 222:	0f 93       	push	r16
+ 224:	1f 93       	push	r17
+ 226:	cf 93       	push	r28
+ 228:	c8 2f       	mov	r28, r24
+ 22a:	7b 01       	movw	r14, r22
+
+	int desired_open_claw_angle = 0;
+	switch (x)
+ 22c:	8f ef       	ldi	r24, 0xFF	; 255
+ 22e:	8c 0f       	add	r24, r28
+ 230:	83 30       	cpi	r24, 0x03	; 3
+ 232:	18 f4       	brcc	.+6      	; 0x23a <open_claws_on_body_x+0x1c>
+	{
+		case 1:
+		desired_open_claw_angle = desired_open_claw_angle1;
+ 234:	00 e0       	ldi	r16, 0x00	; 0
+ 236:	12 e0       	ldi	r17, 0x02	; 2
+ 238:	02 c0       	rjmp	.+4      	; 0x23e <open_claws_on_body_x+0x20>
+	while(1);
+}
+
+void open_claws_on_body_x(unsigned char x, unsigned int speed){
+
+	int desired_open_claw_angle = 0;
+ 23a:	00 e0       	ldi	r16, 0x00	; 0
+ 23c:	10 e0       	ldi	r17, 0x00	; 0
+		break;
+		case 3:
+		desired_open_claw_angle = desired_open_claw_angle3;
+		break;
+	}
+	motor_set_state(x,CCW);
+ 23e:	62 e0       	ldi	r22, 0x02	; 2
+ 240:	8c 2f       	mov	r24, r28
+ 242:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_pwm(x,0,speed);
+ 246:	a7 01       	movw	r20, r14
+ 248:	60 e0       	ldi	r22, 0x00	; 0
+ 24a:	70 e0       	ldi	r23, 0x00	; 0
+ 24c:	8c 2f       	mov	r24, r28
+ 24e:	0e 94 86 03 	call	0x70c	; 0x70c <motor_set_pwm>
+	while (adc_read(x)<desired_open_claw_angle);
+ 252:	8c 2f       	mov	r24, r28
+ 254:	0e 94 c0 00 	call	0x180	; 0x180 <adc_read>
+ 258:	80 17       	cp	r24, r16
+ 25a:	91 07       	cpc	r25, r17
+ 25c:	d4 f3       	brlt	.-12     	; 0x252 <open_claws_on_body_x+0x34>
+	motor_set_state(x,BRAKE);
+ 25e:	63 e0       	ldi	r22, 0x03	; 3
+ 260:	8c 2f       	mov	r24, r28
+ 262:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+}
+ 266:	cf 91       	pop	r28
+ 268:	1f 91       	pop	r17
+ 26a:	0f 91       	pop	r16
+ 26c:	ff 90       	pop	r15
+ 26e:	ef 90       	pop	r14
+ 270:	08 95       	ret
+
+00000272 <extend_body_x>:
+
+void extend_body_x(unsigned char x, unsigned int speed){
+ 272:	0f 93       	push	r16
+ 274:	1f 93       	push	r17
+ 276:	cf 93       	push	r28
+ 278:	8b 01       	movw	r16, r22
+	int body_number = 0;
+	if (x == 1)
+ 27a:	81 30       	cpi	r24, 0x01	; 1
+ 27c:	21 f0       	breq	.+8      	; 0x286 <extend_body_x+0x14>
+	{
+		body_number = 4;
+	}
+	else if(x == 3)
+ 27e:	83 30       	cpi	r24, 0x03	; 3
+ 280:	21 f4       	brne	.+8      	; 0x28a <extend_body_x+0x18>
+	{
+		body_number = 5;
+ 282:	c5 e0       	ldi	r28, 0x05	; 5
+ 284:	03 c0       	rjmp	.+6      	; 0x28c <extend_body_x+0x1a>
+
+void extend_body_x(unsigned char x, unsigned int speed){
+	int body_number = 0;
+	if (x == 1)
+	{
+		body_number = 4;
+ 286:	c4 e0       	ldi	r28, 0x04	; 4
+ 288:	01 c0       	rjmp	.+2      	; 0x28c <extend_body_x+0x1a>
+	while (adc_read(x)<desired_open_claw_angle);
+	motor_set_state(x,BRAKE);
+}
+
+void extend_body_x(unsigned char x, unsigned int speed){
+	int body_number = 0;
+ 28a:	c0 e0       	ldi	r28, 0x00	; 0
+	}
+	else if(x == 3)
+	{
+		body_number = 5;
+	}
+	motor_set_state(body_number,CCW);
+ 28c:	62 e0       	ldi	r22, 0x02	; 2
+ 28e:	8c 2f       	mov	r24, r28
+ 290:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_pwm(body_number,0,speed);
+ 294:	a8 01       	movw	r20, r16
+ 296:	60 e0       	ldi	r22, 0x00	; 0
+ 298:	70 e0       	ldi	r23, 0x00	; 0
+ 29a:	8c 2f       	mov	r24, r28
+ 29c:	0e 94 86 03 	call	0x70c	; 0x70c <motor_set_pwm>
+}
+ 2a0:	cf 91       	pop	r28
+ 2a2:	1f 91       	pop	r17
+ 2a4:	0f 91       	pop	r16
+ 2a6:	08 95       	ret
+
+000002a8 <wait_for_input_from_sensors>:
+
+void wait_for_input_from_sensors(unsigned char state){
+	switch (state)
+ 2a8:	82 30       	cpi	r24, 0x02	; 2
+ 2aa:	89 f0       	breq	.+34     	; 0x2ce <wait_for_input_from_sensors+0x26>
+ 2ac:	83 30       	cpi	r24, 0x03	; 3
+ 2ae:	e1 f0       	breq	.+56     	; 0x2e8 <wait_for_input_from_sensors+0x40>
+ 2b0:	81 30       	cpi	r24, 0x01	; 1
+ 2b2:	31 f5       	brne	.+76     	; 0x300 <wait_for_input_from_sensors+0x58>
+	{
+		case 1:
+		while (!(proxym1||edge1||edge2));
+ 2b4:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <proxym1>
+ 2b8:	81 11       	cpse	r24, r1
+ 2ba:	22 c0       	rjmp	.+68     	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2bc:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 2c0:	81 11       	cpse	r24, r1
+ 2c2:	1e c0       	rjmp	.+60     	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2c4:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 2c8:	88 23       	and	r24, r24
+ 2ca:	a1 f3       	breq	.-24     	; 0x2b4 <wait_for_input_from_sensors+0xc>
+ 2cc:	08 95       	ret
+		break;
+		
+		case 2:
+		while (!(proxym2||edge1||edge2));
+ 2ce:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <proxym2>
+ 2d2:	81 11       	cpse	r24, r1
+ 2d4:	15 c0       	rjmp	.+42     	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2d6:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 2da:	81 11       	cpse	r24, r1
+ 2dc:	11 c0       	rjmp	.+34     	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2de:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 2e2:	88 23       	and	r24, r24
+ 2e4:	a1 f3       	breq	.-24     	; 0x2ce <wait_for_input_from_sensors+0x26>
+ 2e6:	08 95       	ret
+		break;
+		
+		case 3:
+		while (!(proxym3||edge1||edge2));
+ 2e8:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <proxym3>
+ 2ec:	81 11       	cpse	r24, r1
+ 2ee:	08 c0       	rjmp	.+16     	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2f0:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 2f4:	81 11       	cpse	r24, r1
+ 2f6:	04 c0       	rjmp	.+8      	; 0x300 <wait_for_input_from_sensors+0x58>
+ 2f8:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 2fc:	88 23       	and	r24, r24
+ 2fe:	a1 f3       	breq	.-24     	; 0x2e8 <wait_for_input_from_sensors+0x40>
+ 300:	08 95       	ret
+
+00000302 <retract_body_x>:
+		break;
+	}
+}
+
+void retract_body_x(unsigned char x, unsigned int speed){
+ 302:	0f 93       	push	r16
+ 304:	1f 93       	push	r17
+ 306:	cf 93       	push	r28
+ 308:	8b 01       	movw	r16, r22
+	int body_number = 0;
+	if (x == 1)
+ 30a:	81 30       	cpi	r24, 0x01	; 1
+ 30c:	21 f0       	breq	.+8      	; 0x316 <retract_body_x+0x14>
+	{
+		body_number = 4;
+	}
+	else if(x == 3)
+ 30e:	83 30       	cpi	r24, 0x03	; 3
+ 310:	21 f4       	brne	.+8      	; 0x31a <retract_body_x+0x18>
+	{
+		body_number = 5;
+ 312:	c5 e0       	ldi	r28, 0x05	; 5
+ 314:	03 c0       	rjmp	.+6      	; 0x31c <retract_body_x+0x1a>
+
+void retract_body_x(unsigned char x, unsigned int speed){
+	int body_number = 0;
+	if (x == 1)
+	{
+		body_number = 4;
+ 316:	c4 e0       	ldi	r28, 0x04	; 4
+ 318:	01 c0       	rjmp	.+2      	; 0x31c <retract_body_x+0x1a>
+		break;
+	}
+}
+
+void retract_body_x(unsigned char x, unsigned int speed){
+	int body_number = 0;
+ 31a:	c0 e0       	ldi	r28, 0x00	; 0
+	}
+	else if(x == 3)
+	{
+		body_number = 5;
+	}
+	motor_set_state(body_number,CW);
+ 31c:	61 e0       	ldi	r22, 0x01	; 1
+ 31e:	8c 2f       	mov	r24, r28
+ 320:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_pwm(body_number,0,speed);
+ 324:	a8 01       	movw	r20, r16
+ 326:	60 e0       	ldi	r22, 0x00	; 0
+ 328:	70 e0       	ldi	r23, 0x00	; 0
+ 32a:	8c 2f       	mov	r24, r28
+ 32c:	0e 94 86 03 	call	0x70c	; 0x70c <motor_set_pwm>
+}
+ 330:	cf 91       	pop	r28
+ 332:	1f 91       	pop	r17
+ 334:	0f 91       	pop	r16
+ 336:	08 95       	ret
+
+00000338 <stop_and_close_claws_x>:
+
+void stop_and_close_claws_x(unsigned char x, unsigned int speed){
+ 338:	ef 92       	push	r14
+ 33a:	ff 92       	push	r15
+ 33c:	0f 93       	push	r16
+ 33e:	1f 93       	push	r17
+ 340:	cf 93       	push	r28
+ 342:	c8 2f       	mov	r28, r24
+ 344:	7b 01       	movw	r14, r22
+	int desired_closed_claw_angle = 0;
+	
+	switch (x)
+ 346:	8f ef       	ldi	r24, 0xFF	; 255
+ 348:	8c 0f       	add	r24, r28
+ 34a:	83 30       	cpi	r24, 0x03	; 3
+ 34c:	18 f4       	brcc	.+6      	; 0x354 <stop_and_close_claws_x+0x1c>
+	{
+		case 1:
+		desired_closed_claw_angle = desired_closed_claw_angle1;
+ 34e:	00 e0       	ldi	r16, 0x00	; 0
+ 350:	12 e0       	ldi	r17, 0x02	; 2
+ 352:	02 c0       	rjmp	.+4      	; 0x358 <stop_and_close_claws_x+0x20>
+	motor_set_state(body_number,CW);
+	motor_set_pwm(body_number,0,speed);
+}
+
+void stop_and_close_claws_x(unsigned char x, unsigned int speed){
+	int desired_closed_claw_angle = 0;
+ 354:	00 e0       	ldi	r16, 0x00	; 0
+ 356:	10 e0       	ldi	r17, 0x00	; 0
+		case 3:
+		desired_closed_claw_angle = desired_closed_claw_angle3;
+		break;
+	}
+
+	motor_set_state(M4,BRAKE);
+ 358:	63 e0       	ldi	r22, 0x03	; 3
+ 35a:	84 e0       	ldi	r24, 0x04	; 4
+ 35c:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M5,BRAKE);
+ 360:	63 e0       	ldi	r22, 0x03	; 3
+ 362:	85 e0       	ldi	r24, 0x05	; 5
+ 364:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(x,CW);
+ 368:	61 e0       	ldi	r22, 0x01	; 1
+ 36a:	8c 2f       	mov	r24, r28
+ 36c:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_pwm(x,0,speed);
+ 370:	a7 01       	movw	r20, r14
+ 372:	60 e0       	ldi	r22, 0x00	; 0
+ 374:	70 e0       	ldi	r23, 0x00	; 0
+ 376:	8c 2f       	mov	r24, r28
+ 378:	0e 94 86 03 	call	0x70c	; 0x70c <motor_set_pwm>
+	while (adc_read(x)>desired_closed_claw_angle);
+ 37c:	8c 2f       	mov	r24, r28
+ 37e:	0e 94 c0 00 	call	0x180	; 0x180 <adc_read>
+ 382:	08 17       	cp	r16, r24
+ 384:	19 07       	cpc	r17, r25
+ 386:	d4 f3       	brlt	.-12     	; 0x37c <stop_and_close_claws_x+0x44>
+	motor_set_state(x,BRAKE);
+ 388:	63 e0       	ldi	r22, 0x03	; 3
+ 38a:	8c 2f       	mov	r24, r28
+ 38c:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+}
+ 390:	cf 91       	pop	r28
+ 392:	1f 91       	pop	r17
+ 394:	0f 91       	pop	r16
+ 396:	ff 90       	pop	r15
+ 398:	ef 90       	pop	r14
+ 39a:	08 95       	ret
+
+0000039c <main>:
+#define desired_open_claw_angle2 512
+#define desired_open_claw_angle3 512
+
+int main(void)
+{
+	lcd_init();
+ 39c:	0e 94 97 00 	call	0x12e	; 0x12e <lcd_init>
+	i2c_init();
+ 3a0:	0e 94 10 04 	call	0x820	; 0x820 <i2c_init>
+	adc_init();
+ 3a4:	0e 94 d5 00 	call	0x1aa	; 0x1aa <adc_init>
+	motor_init_pwm(PWM_FREQUENCY_1500);
+ 3a8:	83 e0       	ldi	r24, 0x03	; 3
+ 3aa:	0e 94 e5 03 	call	0x7ca	; 0x7ca <motor_init_pwm>
+	interrupt_init();
+ 3ae:	0e 94 dc 00 	call	0x1b8	; 0x1b8 <interrupt_init>
+	sensors_init();
+ 3b2:	0e 94 f0 00 	call	0x1e0	; 0x1e0 <sensors_init>
+	
+	motor_set_state(M1,STOP);
+ 3b6:	60 e0       	ldi	r22, 0x00	; 0
+ 3b8:	81 e0       	ldi	r24, 0x01	; 1
+ 3ba:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M2,STOP);
+ 3be:	60 e0       	ldi	r22, 0x00	; 0
+ 3c0:	82 e0       	ldi	r24, 0x02	; 2
+ 3c2:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M3,STOP);
+ 3c6:	60 e0       	ldi	r22, 0x00	; 0
+ 3c8:	83 e0       	ldi	r24, 0x03	; 3
+ 3ca:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M4,STOP);
+ 3ce:	60 e0       	ldi	r22, 0x00	; 0
+ 3d0:	84 e0       	ldi	r24, 0x04	; 4
+ 3d2:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+	motor_set_state(M5,STOP);
+ 3d6:	60 e0       	ldi	r22, 0x00	; 0
+ 3d8:	85 e0       	ldi	r24, 0x05	; 5
+ 3da:	0e 94 0b 03 	call	0x616	; 0x616 <motor_set_state>
+			}
+			wait_for_input_from_sensors(2);
+			if (proxym2)
+			{
+				stop_and_close_claws_x(2,claw_close_speed);
+				state = 3;
+ 3de:	c3 e0       	ldi	r28, 0x03	; 3
+	motor_set_state(M4,STOP);
+	motor_set_state(M5,STOP);
+
+	while(1)
+	{
+		switch (state)
+ 3e0:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <state>
+ 3e4:	82 30       	cpi	r24, 0x02	; 2
+ 3e6:	09 f4       	brne	.+2      	; 0x3ea <main+0x4e>
+ 3e8:	56 c0       	rjmp	.+172    	; 0x496 <__LOCK_REGION_LENGTH__+0x96>
+ 3ea:	83 30       	cpi	r24, 0x03	; 3
+ 3ec:	09 f4       	brne	.+2      	; 0x3f0 <main+0x54>
+ 3ee:	8c c0       	rjmp	.+280    	; 0x508 <__LOCK_REGION_LENGTH__+0x108>
+ 3f0:	81 30       	cpi	r24, 0x01	; 1
+ 3f2:	c1 f7       	brne	.-16     	; 0x3e4 <main+0x48>
+		{
+		case 1:
+			if (direction == 1)
+ 3f4:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <direction>
+ 3f8:	81 30       	cpi	r24, 0x01	; 1
+ 3fa:	19 f4       	brne	.+6      	; 0x402 <__LOCK_REGION_LENGTH__+0x2>
+			{state_variable_x = 1;}
+ 3fc:	80 93 15 01 	sts	0x0115, r24	; 0x800115 <state_variable_x>
+ 400:	04 c0       	rjmp	.+8      	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+
+			else if(direction == 0)
+ 402:	81 11       	cpse	r24, r1
+ 404:	02 c0       	rjmp	.+4      	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+			{state_variable_x = 3;}
+ 406:	c0 93 15 01 	sts	0x0115, r28	; 0x800115 <state_variable_x>
+			
+			open_claws_on_body_x(state_variable_x, claw_open_speed);
+ 40a:	6f ef       	ldi	r22, 0xFF	; 255
+ 40c:	71 e0       	ldi	r23, 0x01	; 1
+ 40e:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 412:	0e 94 0f 01 	call	0x21e	; 0x21e <open_claws_on_body_x>
+			extend_body_x(state_variable_x,body_extend_speed);
+ 416:	6f ef       	ldi	r22, 0xFF	; 255
+ 418:	71 e0       	ldi	r23, 0x01	; 1
+ 41a:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 41e:	0e 94 39 01 	call	0x272	; 0x272 <extend_body_x>
+			wait_for_input_from_sensors(1);
+ 422:	81 e0       	ldi	r24, 0x01	; 1
+ 424:	0e 94 54 01 	call	0x2a8	; 0x2a8 <wait_for_input_from_sensors>
+			if (proxym1)
+ 428:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <proxym1>
+ 42c:	88 23       	and	r24, r24
+ 42e:	51 f0       	breq	.+20     	; 0x444 <__LOCK_REGION_LENGTH__+0x44>
+			{
+				stop_and_close_claws_x(state_variable_x,claw_close_speed);
+ 430:	6f ef       	ldi	r22, 0xFF	; 255
+ 432:	71 e0       	ldi	r23, 0x01	; 1
+ 434:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 438:	0e 94 9c 01 	call	0x338	; 0x338 <stop_and_close_claws_x>
+				state = 2;
+ 43c:	82 e0       	ldi	r24, 0x02	; 2
+ 43e:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <state>
+ 442:	ce cf       	rjmp	.-100    	; 0x3e0 <main+0x44>
+			}
+			else if(edge1 || edge2)
+ 444:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 448:	81 11       	cpse	r24, r1
+ 44a:	04 c0       	rjmp	.+8      	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 44c:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 450:	88 23       	and	r24, r24
+ 452:	31 f2       	breq	.-116    	; 0x3e0 <main+0x44>
+			{
+				retract_body_x(state_variable_x,body_retract_speed);
+ 454:	6f ef       	ldi	r22, 0xFF	; 255
+ 456:	71 e0       	ldi	r23, 0x01	; 1
+ 458:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 45c:	0e 94 81 01 	call	0x302	; 0x302 <retract_body_x>
+				wait_for_input_from_sensors(1);
+ 460:	81 e0       	ldi	r24, 0x01	; 1
+ 462:	0e 94 54 01 	call	0x2a8	; 0x2a8 <wait_for_input_from_sensors>
+				if (proxym1)
+ 466:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <proxym1>
+ 46a:	88 23       	and	r24, r24
+ 46c:	49 f0       	breq	.+18     	; 0x480 <__LOCK_REGION_LENGTH__+0x80>
+				{
+					stop_and_close_claws_x(state_variable_x,claw_close_speed);
+ 46e:	6f ef       	ldi	r22, 0xFF	; 255
+ 470:	71 e0       	ldi	r23, 0x01	; 1
+ 472:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 476:	0e 94 9c 01 	call	0x338	; 0x338 <stop_and_close_claws_x>
+					direction = 0;
+ 47a:	10 92 16 01 	sts	0x0116, r1	; 0x800116 <direction>
+ 47e:	b0 cf       	rjmp	.-160    	; 0x3e0 <main+0x44>
+				}
+				else if(edge1 || edge2)
+ 480:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 484:	81 11       	cpse	r24, r1
+ 486:	05 c0       	rjmp	.+10     	; 0x492 <__LOCK_REGION_LENGTH__+0x92>
+ 488:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 48c:	88 23       	and	r24, r24
+ 48e:	09 f4       	brne	.+2      	; 0x492 <__LOCK_REGION_LENGTH__+0x92>
+ 490:	a7 cf       	rjmp	.-178    	; 0x3e0 <main+0x44>
+				{stop_retracting_error();}
+ 492:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <stop_retracting_error>
+			}
+		break;
+		
+		case 2:
+			open_claws_on_body_x(2,claw_open_speed);
+ 496:	6f ef       	ldi	r22, 0xFF	; 255
+ 498:	71 e0       	ldi	r23, 0x01	; 1
+ 49a:	82 e0       	ldi	r24, 0x02	; 2
+ 49c:	0e 94 0f 01 	call	0x21e	; 0x21e <open_claws_on_body_x>
+			if (direction == 1)
+ 4a0:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <direction>
+ 4a4:	81 30       	cpi	r24, 0x01	; 1
+ 4a6:	51 f4       	brne	.+20     	; 0x4bc <__LOCK_REGION_LENGTH__+0xbc>
+			{
+				retract_body_x(1,body_retract_speed);
+ 4a8:	6f ef       	ldi	r22, 0xFF	; 255
+ 4aa:	71 e0       	ldi	r23, 0x01	; 1
+ 4ac:	0e 94 81 01 	call	0x302	; 0x302 <retract_body_x>
+				extend_body_x(3,body_extend_speed);
+ 4b0:	6f ef       	ldi	r22, 0xFF	; 255
+ 4b2:	71 e0       	ldi	r23, 0x01	; 1
+ 4b4:	8c 2f       	mov	r24, r28
+ 4b6:	0e 94 39 01 	call	0x272	; 0x272 <extend_body_x>
+ 4ba:	0c c0       	rjmp	.+24     	; 0x4d4 <__LOCK_REGION_LENGTH__+0xd4>
+			}
+			else if(direction == 0)
+ 4bc:	81 11       	cpse	r24, r1
+ 4be:	0a c0       	rjmp	.+20     	; 0x4d4 <__LOCK_REGION_LENGTH__+0xd4>
+			{
+				retract_body_x(3,body_retract_speed);
+ 4c0:	6f ef       	ldi	r22, 0xFF	; 255
+ 4c2:	71 e0       	ldi	r23, 0x01	; 1
+ 4c4:	8c 2f       	mov	r24, r28
+ 4c6:	0e 94 81 01 	call	0x302	; 0x302 <retract_body_x>
+				extend_body_x(1,body_extend_speed);
+ 4ca:	6f ef       	ldi	r22, 0xFF	; 255
+ 4cc:	71 e0       	ldi	r23, 0x01	; 1
+ 4ce:	81 e0       	ldi	r24, 0x01	; 1
+ 4d0:	0e 94 39 01 	call	0x272	; 0x272 <extend_body_x>
+			}
+			wait_for_input_from_sensors(2);
+ 4d4:	82 e0       	ldi	r24, 0x02	; 2
+ 4d6:	0e 94 54 01 	call	0x2a8	; 0x2a8 <wait_for_input_from_sensors>
+			if (proxym2)
+ 4da:	80 91 13 01 	lds	r24, 0x0113	; 0x800113 <proxym2>
+ 4de:	88 23       	and	r24, r24
+ 4e0:	41 f0       	breq	.+16     	; 0x4f2 <__LOCK_REGION_LENGTH__+0xf2>
+			{
+				stop_and_close_claws_x(2,claw_close_speed);
+ 4e2:	6f ef       	ldi	r22, 0xFF	; 255
+ 4e4:	71 e0       	ldi	r23, 0x01	; 1
+ 4e6:	82 e0       	ldi	r24, 0x02	; 2
+ 4e8:	0e 94 9c 01 	call	0x338	; 0x338 <stop_and_close_claws_x>
+				state = 3;
+ 4ec:	c0 93 0e 01 	sts	0x010E, r28	; 0x80010e <state>
+ 4f0:	77 cf       	rjmp	.-274    	; 0x3e0 <main+0x44>
+			} 
+			else if(edge1 || edge2)
+ 4f2:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 4f6:	81 11       	cpse	r24, r1
+ 4f8:	05 c0       	rjmp	.+10     	; 0x504 <__LOCK_REGION_LENGTH__+0x104>
+ 4fa:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 4fe:	88 23       	and	r24, r24
+ 500:	09 f4       	brne	.+2      	; 0x504 <__LOCK_REGION_LENGTH__+0x104>
+ 502:	6e cf       	rjmp	.-292    	; 0x3e0 <main+0x44>
+			{stop_retracting_error();}
+ 504:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <stop_retracting_error>
+		break;
+		
+		case 3:
+			if (direction == 1)
+ 508:	80 91 16 01 	lds	r24, 0x0116	; 0x800116 <direction>
+ 50c:	81 30       	cpi	r24, 0x01	; 1
+ 50e:	21 f4       	brne	.+8      	; 0x518 <__LOCK_REGION_LENGTH__+0x118>
+			{state_variable_x = 2;} 
+ 510:	82 e0       	ldi	r24, 0x02	; 2
+ 512:	80 93 15 01 	sts	0x0115, r24	; 0x800115 <state_variable_x>
+ 516:	05 c0       	rjmp	.+10     	; 0x522 <__LOCK_REGION_LENGTH__+0x122>
+			
+			else if(direction == 0)
+ 518:	81 11       	cpse	r24, r1
+ 51a:	03 c0       	rjmp	.+6      	; 0x522 <__LOCK_REGION_LENGTH__+0x122>
+			{state_variable_x = 1;}
+ 51c:	81 e0       	ldi	r24, 0x01	; 1
+ 51e:	80 93 15 01 	sts	0x0115, r24	; 0x800115 <state_variable_x>
+			open_claws_on_body_x(state_variable_x,claw_open_speed);
+ 522:	6f ef       	ldi	r22, 0xFF	; 255
+ 524:	71 e0       	ldi	r23, 0x01	; 1
+ 526:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 52a:	0e 94 0f 01 	call	0x21e	; 0x21e <open_claws_on_body_x>
+			extend_body_x(state_variable_x,body_extend_speed);
+ 52e:	6f ef       	ldi	r22, 0xFF	; 255
+ 530:	71 e0       	ldi	r23, 0x01	; 1
+ 532:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 536:	0e 94 39 01 	call	0x272	; 0x272 <extend_body_x>
+			wait_for_input_from_sensors(3);
+ 53a:	8c 2f       	mov	r24, r28
+ 53c:	0e 94 54 01 	call	0x2a8	; 0x2a8 <wait_for_input_from_sensors>
+			if (proxym3)
+ 540:	80 91 12 01 	lds	r24, 0x0112	; 0x800112 <proxym3>
+ 544:	88 23       	and	r24, r24
+ 546:	51 f0       	breq	.+20     	; 0x55c <__LOCK_REGION_LENGTH__+0x15c>
+			{
+				stop_and_close_claws_x(state_variable_x,claw_close_speed);
+ 548:	6f ef       	ldi	r22, 0xFF	; 255
+ 54a:	71 e0       	ldi	r23, 0x01	; 1
+ 54c:	80 91 15 01 	lds	r24, 0x0115	; 0x800115 <state_variable_x>
+ 550:	0e 94 9c 01 	call	0x338	; 0x338 <stop_and_close_claws_x>
+				state = 1;
+ 554:	81 e0       	ldi	r24, 0x01	; 1
+ 556:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <state>
+ 55a:	42 cf       	rjmp	.-380    	; 0x3e0 <main+0x44>
+			}
+			else if(edge1 || edge2)
+ 55c:	80 91 11 01 	lds	r24, 0x0111	; 0x800111 <edge1>
+ 560:	81 11       	cpse	r24, r1
+ 562:	05 c0       	rjmp	.+10     	; 0x56e <__LOCK_REGION_LENGTH__+0x16e>
+ 564:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <__data_end>
+ 568:	88 23       	and	r24, r24
+ 56a:	09 f4       	brne	.+2      	; 0x56e <__LOCK_REGION_LENGTH__+0x16e>
+ 56c:	39 cf       	rjmp	.-398    	; 0x3e0 <main+0x44>
+			{stop_retracting_error();}
+ 56e:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <stop_retracting_error>
+
+00000572 <motor_set8574_controlpin>:
+#include "i2cmaster.h"
+
+void motor_set8574_controlpin(unsigned char bit_number, unsigned char level)
+{
+	static unsigned char out_byte = 0;
+	if(level == LOW)
+ 572:	61 11       	cpse	r22, r1
+ 574:	10 c0       	rjmp	.+32     	; 0x596 <motor_set8574_controlpin+0x24>
+		out_byte &= ~(1<<bit_number);
+ 576:	21 e0       	ldi	r18, 0x01	; 1
+ 578:	30 e0       	ldi	r19, 0x00	; 0
+ 57a:	a9 01       	movw	r20, r18
+ 57c:	02 c0       	rjmp	.+4      	; 0x582 <motor_set8574_controlpin+0x10>
+ 57e:	44 0f       	add	r20, r20
+ 580:	55 1f       	adc	r21, r21
+ 582:	8a 95       	dec	r24
+ 584:	e2 f7       	brpl	.-8      	; 0x57e <motor_set8574_controlpin+0xc>
+ 586:	ca 01       	movw	r24, r20
+ 588:	80 95       	com	r24
+ 58a:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <out_byte.1638>
+ 58e:	89 23       	and	r24, r25
+ 590:	80 93 17 01 	sts	0x0117, r24	; 0x800117 <out_byte.1638>
+ 594:	10 c0       	rjmp	.+32     	; 0x5b6 <motor_set8574_controlpin+0x44>
+	if(level==HIGH)
+ 596:	61 30       	cpi	r22, 0x01	; 1
+ 598:	71 f4       	brne	.+28     	; 0x5b6 <motor_set8574_controlpin+0x44>
+		out_byte |= (1<<bit_number);
+ 59a:	21 e0       	ldi	r18, 0x01	; 1
+ 59c:	30 e0       	ldi	r19, 0x00	; 0
+ 59e:	a9 01       	movw	r20, r18
+ 5a0:	02 c0       	rjmp	.+4      	; 0x5a6 <motor_set8574_controlpin+0x34>
+ 5a2:	44 0f       	add	r20, r20
+ 5a4:	55 1f       	adc	r21, r21
+ 5a6:	8a 95       	dec	r24
+ 5a8:	e2 f7       	brpl	.-8      	; 0x5a2 <motor_set8574_controlpin+0x30>
+ 5aa:	ca 01       	movw	r24, r20
+ 5ac:	90 91 17 01 	lds	r25, 0x0117	; 0x800117 <out_byte.1638>
+ 5b0:	89 2b       	or	r24, r25
+ 5b2:	80 93 17 01 	sts	0x0117, r24	; 0x800117 <out_byte.1638>
+	i2c_start(PCF8574_ADR + I2C_WRITE);
+ 5b6:	80 e7       	ldi	r24, 0x70	; 112
+ 5b8:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(out_byte);
+ 5bc:	80 91 17 01 	lds	r24, 0x0117	; 0x800117 <out_byte.1638>
+ 5c0:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_stop();
+ 5c4:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+ 5c8:	08 95       	ret
+
+000005ca <motor_set1438_controlpin>:
+}
+
+
+void motor_set1438_controlpin(unsigned char pin_adr, unsigned char level)
+{
+ 5ca:	cf 93       	push	r28
+ 5cc:	df 93       	push	r29
+ 5ce:	d8 2f       	mov	r29, r24
+ 5d0:	c6 2f       	mov	r28, r22
+	i2c_start(PCA_ADR + I2C_WRITE);
+ 5d2:	80 ec       	ldi	r24, 0xC0	; 192
+ 5d4:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(pin_adr);
+ 5d8:	8d 2f       	mov	r24, r29
+ 5da:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	if(level == LOW)
+ 5de:	c1 11       	cpse	r28, r1
+ 5e0:	0a c0       	rjmp	.+20     	; 0x5f6 <motor_set1438_controlpin+0x2c>
+	{
+		i2c_write(0x00); i2c_write(0x00); i2c_write(0x10);
+ 5e2:	80 e0       	ldi	r24, 0x00	; 0
+ 5e4:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+ 5e8:	80 e0       	ldi	r24, 0x00	; 0
+ 5ea:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+ 5ee:	80 e1       	ldi	r24, 0x10	; 16
+ 5f0:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+ 5f4:	0b c0       	rjmp	.+22     	; 0x60c <motor_set1438_controlpin+0x42>
+	}
+	if(level==HIGH)
+ 5f6:	c1 30       	cpi	r28, 0x01	; 1
+ 5f8:	49 f4       	brne	.+18     	; 0x60c <motor_set1438_controlpin+0x42>
+	{
+		i2c_write(0x10); i2c_write(0x00); i2c_write(0x00);
+ 5fa:	80 e1       	ldi	r24, 0x10	; 16
+ 5fc:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+ 600:	80 e0       	ldi	r24, 0x00	; 0
+ 602:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+ 606:	80 e0       	ldi	r24, 0x00	; 0
+ 608:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	}
+	i2c_stop();
+ 60c:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+}
+ 610:	df 91       	pop	r29
+ 612:	cf 91       	pop	r28
+ 614:	08 95       	ret
+
+00000616 <motor_set_state>:
+
+void motor_set_state(unsigned char motor_number, unsigned char state)
+{
+ 616:	cf 93       	push	r28
+ 618:	96 2f       	mov	r25, r22
+	unsigned char in1=0, in2=0;
+	
+	switch(motor_number)
+ 61a:	48 2f       	mov	r20, r24
+ 61c:	50 e0       	ldi	r21, 0x00	; 0
+ 61e:	fa 01       	movw	r30, r20
+ 620:	31 97       	sbiw	r30, 0x01	; 1
+ 622:	e8 30       	cpi	r30, 0x08	; 8
+ 624:	f1 05       	cpc	r31, r1
+ 626:	80 f4       	brcc	.+32     	; 0x648 <motor_set_state+0x32>
+ 628:	ec 5c       	subi	r30, 0xCC	; 204
+ 62a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 62c:	0c 94 58 04 	jmp	0x8b0	; 0x8b0 <__tablejump2__>
+		case M1:	in1=M1_IN1+1; in2=M1_IN2+1; break; // High byte of reg
+		case M2: 	in1=M2_IN1+1; in2=M2_IN2+1; break; // High byte of reg
+		case M3:	in1=M3_IN1+1; in2=M3_IN2+1; break; // High byte of reg
+		case M4:	in1=M4_IN1+1; in2=M4_IN2+1; break; // High byte of reg
+		case M5:	in1=M5_IN1; in2=M5_IN2; break;		// Set bit position
+		case M6:	in1=M6_IN1; in2=M6_IN2; break;		// Set bit position
+ 630:	c3 e0       	ldi	r28, 0x03	; 3
+ 632:	82 e0       	ldi	r24, 0x02	; 2
+ 634:	36 c0       	rjmp	.+108    	; 0x6a2 <motor_set_state+0x8c>
+	unsigned char in1=0, in2=0;
+	
+	switch(motor_number)
+	{
+		case M1:	in1=M1_IN1+1; in2=M1_IN2+1; break; // High byte of reg
+		case M2: 	in1=M2_IN1+1; in2=M2_IN2+1; break; // High byte of reg
+ 636:	c7 e3       	ldi	r28, 0x37	; 55
+ 638:	83 e3       	ldi	r24, 0x33	; 51
+ 63a:	0a c0       	rjmp	.+20     	; 0x650 <motor_set_state+0x3a>
+		case M3:	in1=M3_IN1+1; in2=M3_IN2+1; break; // High byte of reg
+		case M4:	in1=M4_IN1+1; in2=M4_IN2+1; break; // High byte of reg
+ 63c:	cf e1       	ldi	r28, 0x1F	; 31
+ 63e:	8b e1       	ldi	r24, 0x1B	; 27
+ 640:	07 c0       	rjmp	.+14     	; 0x650 <motor_set_state+0x3a>
+		case M5:	in1=M5_IN1; in2=M5_IN2; break;		// Set bit position
+		case M6:	in1=M6_IN1; in2=M6_IN2; break;		// Set bit position
+		case M7:	in1=M7_IN1; in2=M7_IN2; break;		// Set bit position
+		case M8:	in1=M8_IN1; in2=M8_IN2; break;		// Set bit position
+ 642:	c7 e0       	ldi	r28, 0x07	; 7
+ 644:	86 e0       	ldi	r24, 0x06	; 6
+ 646:	2d c0       	rjmp	.+90     	; 0x6a2 <motor_set_state+0x8c>
+	}
+	if(motor_number < 5)			// M1 - M4
+ 648:	85 30       	cpi	r24, 0x05	; 5
+ 64a:	48 f5       	brcc	.+82     	; 0x69e <motor_set_state+0x88>
+	i2c_stop();
+}
+
+void motor_set_state(unsigned char motor_number, unsigned char state)
+{
+	unsigned char in1=0, in2=0;
+ 64c:	c0 e0       	ldi	r28, 0x00	; 0
+ 64e:	80 e0       	ldi	r24, 0x00	; 0
+		case M7:	in1=M7_IN1; in2=M7_IN2; break;		// Set bit position
+		case M8:	in1=M8_IN1; in2=M8_IN2; break;		// Set bit position
+	}
+	if(motor_number < 5)			// M1 - M4
+	{
+		switch(state)
+ 650:	92 30       	cpi	r25, 0x02	; 2
+ 652:	29 f0       	breq	.+10     	; 0x65e <motor_set_state+0x48>
+ 654:	93 30       	cpi	r25, 0x03	; 3
+ 656:	99 f0       	breq	.+38     	; 0x67e <motor_set_state+0x68>
+ 658:	91 30       	cpi	r25, 0x01	; 1
+ 65a:	c9 f4       	brne	.+50     	; 0x68e <motor_set_state+0x78>
+ 65c:	08 c0       	rjmp	.+16     	; 0x66e <motor_set_state+0x58>
+		{
+		
+			case CCW:		motor_set1438_controlpin(in1, LOW); motor_set1438_controlpin(in2, HIGH); break;  // IN1=0, IN2=1
+ 65e:	60 e0       	ldi	r22, 0x00	; 0
+ 660:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 664:	61 e0       	ldi	r22, 0x01	; 1
+ 666:	8c 2f       	mov	r24, r28
+ 668:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 66c:	4d c0       	rjmp	.+154    	; 0x708 <motor_set_state+0xf2>
+			case CW:		motor_set1438_controlpin(in1, HIGH); motor_set1438_controlpin(in2, LOW); break;	// IN1=1, IN2=0
+ 66e:	61 e0       	ldi	r22, 0x01	; 1
+ 670:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 674:	60 e0       	ldi	r22, 0x00	; 0
+ 676:	8c 2f       	mov	r24, r28
+ 678:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 67c:	45 c0       	rjmp	.+138    	; 0x708 <motor_set_state+0xf2>
+			case BRAKE:		motor_set1438_controlpin(in1, HIGH); motor_set1438_controlpin(in2, HIGH);break;	// IN1=1, IN2=1
+ 67e:	61 e0       	ldi	r22, 0x01	; 1
+ 680:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 684:	61 e0       	ldi	r22, 0x01	; 1
+ 686:	8c 2f       	mov	r24, r28
+ 688:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 68c:	3d c0       	rjmp	.+122    	; 0x708 <motor_set_state+0xf2>
+			case STOP:
+			default:		motor_set1438_controlpin(in1, LOW); motor_set1438_controlpin(in2, LOW);	// IN1=0, IN2=0
+ 68e:	60 e0       	ldi	r22, 0x00	; 0
+ 690:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 694:	60 e0       	ldi	r22, 0x00	; 0
+ 696:	8c 2f       	mov	r24, r28
+ 698:	0e 94 e5 02 	call	0x5ca	; 0x5ca <motor_set1438_controlpin>
+ 69c:	35 c0       	rjmp	.+106    	; 0x708 <motor_set_state+0xf2>
+	i2c_stop();
+}
+
+void motor_set_state(unsigned char motor_number, unsigned char state)
+{
+	unsigned char in1=0, in2=0;
+ 69e:	c0 e0       	ldi	r28, 0x00	; 0
+ 6a0:	80 e0       	ldi	r24, 0x00	; 0
+			default:		motor_set1438_controlpin(in1, LOW); motor_set1438_controlpin(in2, LOW);	// IN1=0, IN2=0
+		}
+	}
+	else							// M5 - M8
+	{
+		switch(state)
+ 6a2:	92 30       	cpi	r25, 0x02	; 2
+ 6a4:	29 f0       	breq	.+10     	; 0x6b0 <motor_set_state+0x9a>
+ 6a6:	93 30       	cpi	r25, 0x03	; 3
+ 6a8:	99 f0       	breq	.+38     	; 0x6d0 <motor_set_state+0xba>
+ 6aa:	91 30       	cpi	r25, 0x01	; 1
+ 6ac:	c9 f4       	brne	.+50     	; 0x6e0 <motor_set_state+0xca>
+ 6ae:	08 c0       	rjmp	.+16     	; 0x6c0 <motor_set_state+0xaa>
+		{
+			case CCW:		motor_set8574_controlpin(in1, LOW); motor_set8574_controlpin(in2, HIGH); break;  // IN1=0, IN2=1
+ 6b0:	60 e0       	ldi	r22, 0x00	; 0
+ 6b2:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6b6:	61 e0       	ldi	r22, 0x01	; 1
+ 6b8:	8c 2f       	mov	r24, r28
+ 6ba:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6be:	24 c0       	rjmp	.+72     	; 0x708 <motor_set_state+0xf2>
+			case CW:		motor_set8574_controlpin(in1, HIGH); motor_set8574_controlpin(in2, LOW); break;	// IN1=1, IN2=0
+ 6c0:	61 e0       	ldi	r22, 0x01	; 1
+ 6c2:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6c6:	60 e0       	ldi	r22, 0x00	; 0
+ 6c8:	8c 2f       	mov	r24, r28
+ 6ca:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6ce:	1c c0       	rjmp	.+56     	; 0x708 <motor_set_state+0xf2>
+			case BRAKE:		motor_set8574_controlpin(in1, HIGH); motor_set8574_controlpin(in2, HIGH);break;	// IN1=1, IN2=1
+ 6d0:	61 e0       	ldi	r22, 0x01	; 1
+ 6d2:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6d6:	61 e0       	ldi	r22, 0x01	; 1
+ 6d8:	8c 2f       	mov	r24, r28
+ 6da:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6de:	14 c0       	rjmp	.+40     	; 0x708 <motor_set_state+0xf2>
+			case STOP:
+			default:		motor_set8574_controlpin(in1, LOW); motor_set8574_controlpin(in2, LOW);	// IN1=0, IN2=0
+ 6e0:	60 e0       	ldi	r22, 0x00	; 0
+ 6e2:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+ 6e6:	60 e0       	ldi	r22, 0x00	; 0
+ 6e8:	8c 2f       	mov	r24, r28
+ 6ea:	0e 94 b9 02 	call	0x572	; 0x572 <motor_set8574_controlpin>
+		}
+	}
+}
+ 6ee:	0c c0       	rjmp	.+24     	; 0x708 <motor_set_state+0xf2>
+	{
+		case M1:	in1=M1_IN1+1; in2=M1_IN2+1; break; // High byte of reg
+		case M2: 	in1=M2_IN1+1; in2=M2_IN2+1; break; // High byte of reg
+		case M3:	in1=M3_IN1+1; in2=M3_IN2+1; break; // High byte of reg
+		case M4:	in1=M4_IN1+1; in2=M4_IN2+1; break; // High byte of reg
+		case M5:	in1=M5_IN1; in2=M5_IN2; break;		// Set bit position
+ 6f0:	c1 e0       	ldi	r28, 0x01	; 1
+ 6f2:	80 e0       	ldi	r24, 0x00	; 0
+ 6f4:	d6 cf       	rjmp	.-84     	; 0x6a2 <motor_set_state+0x8c>
+		case M6:	in1=M6_IN1; in2=M6_IN2; break;		// Set bit position
+		case M7:	in1=M7_IN1; in2=M7_IN2; break;		// Set bit position
+ 6f6:	c5 e0       	ldi	r28, 0x05	; 5
+ 6f8:	84 e0       	ldi	r24, 0x04	; 4
+ 6fa:	d3 cf       	rjmp	.-90     	; 0x6a2 <motor_set_state+0x8c>
+{
+	unsigned char in1=0, in2=0;
+	
+	switch(motor_number)
+	{
+		case M1:	in1=M1_IN1+1; in2=M1_IN2+1; break; // High byte of reg
+ 6fc:	cb e2       	ldi	r28, 0x2B	; 43
+ 6fe:	8f e2       	ldi	r24, 0x2F	; 47
+ 700:	a7 cf       	rjmp	.-178    	; 0x650 <motor_set_state+0x3a>
+		case M2: 	in1=M2_IN1+1; in2=M2_IN2+1; break; // High byte of reg
+		case M3:	in1=M3_IN1+1; in2=M3_IN2+1; break; // High byte of reg
+ 702:	c3 e1       	ldi	r28, 0x13	; 19
+ 704:	87 e1       	ldi	r24, 0x17	; 23
+ 706:	a4 cf       	rjmp	.-184    	; 0x650 <motor_set_state+0x3a>
+			case BRAKE:		motor_set8574_controlpin(in1, HIGH); motor_set8574_controlpin(in2, HIGH);break;	// IN1=1, IN2=1
+			case STOP:
+			default:		motor_set8574_controlpin(in1, LOW); motor_set8574_controlpin(in2, LOW);	// IN1=0, IN2=0
+		}
+	}
+}
+ 708:	cf 91       	pop	r28
+ 70a:	08 95       	ret
+
+0000070c <motor_set_pwm>:
+
+void motor_set_pwm(unsigned char motor_number, unsigned int on_value, unsigned int off_value)
+{
+ 70c:	ff 92       	push	r15
+ 70e:	0f 93       	push	r16
+ 710:	1f 93       	push	r17
+ 712:	cf 93       	push	r28
+ 714:	df 93       	push	r29
+ 716:	8b 01       	movw	r16, r22
+ 718:	ea 01       	movw	r28, r20
+	unsigned char pwm_reg=0;
+	if(on_value > 0xFFF) on_value = 0;
+ 71a:	61 15       	cp	r22, r1
+ 71c:	70 41       	sbci	r23, 0x10	; 16
+ 71e:	10 f0       	brcs	.+4      	; 0x724 <motor_set_pwm+0x18>
+ 720:	00 e0       	ldi	r16, 0x00	; 0
+ 722:	10 e0       	ldi	r17, 0x00	; 0
+	if(off_value > 0xFFF) off_value = 0;
+ 724:	c1 15       	cp	r28, r1
+ 726:	90 e1       	ldi	r25, 0x10	; 16
+ 728:	d9 07       	cpc	r29, r25
+ 72a:	10 f0       	brcs	.+4      	; 0x730 <motor_set_pwm+0x24>
+ 72c:	c0 e0       	ldi	r28, 0x00	; 0
+ 72e:	d0 e0       	ldi	r29, 0x00	; 0
+	
+	switch(motor_number)
+ 730:	90 e0       	ldi	r25, 0x00	; 0
+ 732:	fc 01       	movw	r30, r24
+ 734:	31 97       	sbiw	r30, 0x01	; 1
+ 736:	e8 30       	cpi	r30, 0x08	; 8
+ 738:	f1 05       	cpc	r31, r1
+ 73a:	60 f5       	brcc	.+88     	; 0x794 <motor_set_pwm+0x88>
+ 73c:	e4 5c       	subi	r30, 0xC4	; 196
+ 73e:	ff 4f       	sbci	r31, 0xFF	; 255
+ 740:	0c 94 58 04 	jmp	0x8b0	; 0x8b0 <__tablejump2__>
+	{
+		case M1:	pwm_reg = M1_PWM; break;
+ 744:	0f 2e       	mov	r0, r31
+ 746:	f6 e2       	ldi	r31, 0x26	; 38
+ 748:	ff 2e       	mov	r15, r31
+ 74a:	f0 2d       	mov	r31, r0
+ 74c:	24 c0       	rjmp	.+72     	; 0x796 <motor_set_pwm+0x8a>
+		case M2:	pwm_reg = M2_PWM; break;
+ 74e:	0f 2e       	mov	r0, r31
+ 750:	fa e3       	ldi	r31, 0x3A	; 58
+ 752:	ff 2e       	mov	r15, r31
+ 754:	f0 2d       	mov	r31, r0
+ 756:	1f c0       	rjmp	.+62     	; 0x796 <motor_set_pwm+0x8a>
+		case M3:	pwm_reg = M3_PWM; break;
+ 758:	0f 2e       	mov	r0, r31
+ 75a:	fe e0       	ldi	r31, 0x0E	; 14
+ 75c:	ff 2e       	mov	r15, r31
+ 75e:	f0 2d       	mov	r31, r0
+ 760:	1a c0       	rjmp	.+52     	; 0x796 <motor_set_pwm+0x8a>
+		case M4:	pwm_reg = M4_PWM; break;
+ 762:	0f 2e       	mov	r0, r31
+ 764:	f2 e2       	ldi	r31, 0x22	; 34
+ 766:	ff 2e       	mov	r15, r31
+ 768:	f0 2d       	mov	r31, r0
+ 76a:	15 c0       	rjmp	.+42     	; 0x796 <motor_set_pwm+0x8a>
+		case M5:	pwm_reg = M5_PWM; break;
+ 76c:	0f 2e       	mov	r0, r31
+ 76e:	f6 e0       	ldi	r31, 0x06	; 6
+ 770:	ff 2e       	mov	r15, r31
+ 772:	f0 2d       	mov	r31, r0
+ 774:	10 c0       	rjmp	.+32     	; 0x796 <motor_set_pwm+0x8a>
+		case M6:	pwm_reg = M6_PWM; break;
+ 776:	0f 2e       	mov	r0, r31
+ 778:	fa e0       	ldi	r31, 0x0A	; 10
+ 77a:	ff 2e       	mov	r15, r31
+ 77c:	f0 2d       	mov	r31, r0
+ 77e:	0b c0       	rjmp	.+22     	; 0x796 <motor_set_pwm+0x8a>
+		case M7:	pwm_reg = M7_PWM; break;
+ 780:	0f 2e       	mov	r0, r31
+ 782:	fe e3       	ldi	r31, 0x3E	; 62
+ 784:	ff 2e       	mov	r15, r31
+ 786:	f0 2d       	mov	r31, r0
+ 788:	06 c0       	rjmp	.+12     	; 0x796 <motor_set_pwm+0x8a>
+		case M8:	pwm_reg = M8_PWM; break;
+ 78a:	0f 2e       	mov	r0, r31
+ 78c:	f2 e4       	ldi	r31, 0x42	; 66
+ 78e:	ff 2e       	mov	r15, r31
+ 790:	f0 2d       	mov	r31, r0
+ 792:	01 c0       	rjmp	.+2      	; 0x796 <motor_set_pwm+0x8a>
+	}
+}
+
+void motor_set_pwm(unsigned char motor_number, unsigned int on_value, unsigned int off_value)
+{
+	unsigned char pwm_reg=0;
+ 794:	f1 2c       	mov	r15, r1
+		case M5:	pwm_reg = M5_PWM; break;
+		case M6:	pwm_reg = M6_PWM; break;
+		case M7:	pwm_reg = M7_PWM; break;
+		case M8:	pwm_reg = M8_PWM; break;
+	}
+	i2c_start(PCA_ADR + I2C_WRITE);
+ 796:	80 ec       	ldi	r24, 0xC0	; 192
+ 798:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(pwm_reg);
+ 79c:	8f 2d       	mov	r24, r15
+ 79e:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_write(on_value&0x0FF);
+ 7a2:	80 2f       	mov	r24, r16
+ 7a4:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	on_value >>= 8;
+	i2c_write(on_value);
+ 7a8:	81 2f       	mov	r24, r17
+ 7aa:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_write(off_value & 0x0FF);
+ 7ae:	8c 2f       	mov	r24, r28
+ 7b0:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	off_value >>= 8;
+	i2c_write(off_value);
+ 7b4:	8d 2f       	mov	r24, r29
+ 7b6:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_stop();
+ 7ba:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+}
+ 7be:	df 91       	pop	r29
+ 7c0:	cf 91       	pop	r28
+ 7c2:	1f 91       	pop	r17
+ 7c4:	0f 91       	pop	r16
+ 7c6:	ff 90       	pop	r15
+ 7c8:	08 95       	ret
+
+000007ca <motor_init_pwm>:
+
+void motor_init_pwm(unsigned char frequency)  // INIT PCA9685 AND PCA8574
+{
+ 7ca:	cf 93       	push	r28
+ 7cc:	c8 2f       	mov	r28, r24
+	i2c_start(PCA_ADR + I2C_WRITE);
+ 7ce:	80 ec       	ldi	r24, 0xC0	; 192
+ 7d0:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(0x00);
+ 7d4:	80 e0       	ldi	r24, 0x00	; 0
+ 7d6:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_write(0b00110000);					// sleep and autoinc
+ 7da:	80 e3       	ldi	r24, 0x30	; 48
+ 7dc:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_stop();
+ 7e0:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+	
+	i2c_start(PCA_ADR + I2C_WRITE);
+ 7e4:	80 ec       	ldi	r24, 0xC0	; 192
+ 7e6:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(0xFE);
+ 7ea:	8e ef       	ldi	r24, 0xFE	; 254
+ 7ec:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_write(frequency);						
+ 7f0:	8c 2f       	mov	r24, r28
+ 7f2:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	
+	i2c_start(PCA_ADR + I2C_WRITE);
+ 7f6:	80 ec       	ldi	r24, 0xC0	; 192
+ 7f8:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(0x00);
+ 7fc:	80 e0       	ldi	r24, 0x00	; 0
+ 7fe:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_write(0b00100000);					// autoinc
+ 802:	80 e2       	ldi	r24, 0x20	; 32
+ 804:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_stop();	
+ 808:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+	
+	i2c_start(PCF8574_ADR + I2C_WRITE);		// All PCF8574 outputs low
+ 80c:	80 e7       	ldi	r24, 0x70	; 112
+ 80e:	0e 94 16 04 	call	0x82c	; 0x82c <i2c_start>
+	i2c_write(0x00);
+ 812:	80 e0       	ldi	r24, 0x00	; 0
+ 814:	0e 94 46 04 	call	0x88c	; 0x88c <i2c_write>
+	i2c_stop();
+ 818:	0e 94 3d 04 	call	0x87a	; 0x87a <i2c_stop>
+ 81c:	cf 91       	pop	r28
+ 81e:	08 95       	ret
+
+00000820 <i2c_init>:
+*************************************************************************/
+unsigned char i2c_rep_start(unsigned char address)
+{
+    return i2c_start( address );
+
+}/* i2c_rep_start */
+ 820:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+ 824:	88 e4       	ldi	r24, 0x48	; 72
+ 826:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7e00b8>
+ 82a:	08 95       	ret
+
+0000082c <i2c_start>:
+ 82c:	94 ea       	ldi	r25, 0xA4	; 164
+ 82e:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+ 832:	ec eb       	ldi	r30, 0xBC	; 188
+ 834:	f0 e0       	ldi	r31, 0x00	; 0
+ 836:	90 81       	ld	r25, Z
+ 838:	99 23       	and	r25, r25
+ 83a:	ec f7       	brge	.-6      	; 0x836 <i2c_start+0xa>
+ 83c:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+ 840:	98 7f       	andi	r25, 0xF8	; 248
+ 842:	98 30       	cpi	r25, 0x08	; 8
+ 844:	11 f0       	breq	.+4      	; 0x84a <i2c_start+0x1e>
+ 846:	90 31       	cpi	r25, 0x10	; 16
+ 848:	a1 f4       	brne	.+40     	; 0x872 <i2c_start+0x46>
+ 84a:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
+ 84e:	84 e8       	ldi	r24, 0x84	; 132
+ 850:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+ 854:	ec eb       	ldi	r30, 0xBC	; 188
+ 856:	f0 e0       	ldi	r31, 0x00	; 0
+ 858:	80 81       	ld	r24, Z
+ 85a:	88 23       	and	r24, r24
+ 85c:	ec f7       	brge	.-6      	; 0x858 <i2c_start+0x2c>
+ 85e:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+ 862:	98 7f       	andi	r25, 0xF8	; 248
+ 864:	98 31       	cpi	r25, 0x18	; 24
+ 866:	39 f0       	breq	.+14     	; 0x876 <i2c_start+0x4a>
+ 868:	81 e0       	ldi	r24, 0x01	; 1
+ 86a:	90 34       	cpi	r25, 0x40	; 64
+ 86c:	29 f4       	brne	.+10     	; 0x878 <i2c_start+0x4c>
+ 86e:	80 e0       	ldi	r24, 0x00	; 0
+ 870:	08 95       	ret
+ 872:	81 e0       	ldi	r24, 0x01	; 1
+ 874:	08 95       	ret
+ 876:	80 e0       	ldi	r24, 0x00	; 0
+ 878:	08 95       	ret
+
+0000087a <i2c_stop>:
+ Terminates the data transfer and releases the I2C bus
+*************************************************************************/
+void i2c_stop(void)
+{
+    /* send stop condition */
+	TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+ 87a:	84 e9       	ldi	r24, 0x94	; 148
+ 87c:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+	
+	// wait until stop condition is executed and bus released
+	while(TWCR & (1<<TWSTO));
+ 880:	ec eb       	ldi	r30, 0xBC	; 188
+ 882:	f0 e0       	ldi	r31, 0x00	; 0
+ 884:	80 81       	ld	r24, Z
+ 886:	84 fd       	sbrc	r24, 4
+ 888:	fd cf       	rjmp	.-6      	; 0x884 <i2c_stop+0xa>
+
+}/* i2c_stop */
+ 88a:	08 95       	ret
+
+0000088c <i2c_write>:
+unsigned char i2c_write( unsigned char data )
+{	
+    uint8_t   twst;
+    
+	// send data to the previously addressed device
+	TWDR = data;
+ 88c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7e00bb>
+	TWCR = (1<<TWINT) | (1<<TWEN);
+ 890:	84 e8       	ldi	r24, 0x84	; 132
+ 892:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7e00bc>
+
+	// wait until transmission completed
+	while(!(TWCR & (1<<TWINT)));
+ 896:	ec eb       	ldi	r30, 0xBC	; 188
+ 898:	f0 e0       	ldi	r31, 0x00	; 0
+ 89a:	80 81       	ld	r24, Z
+ 89c:	88 23       	and	r24, r24
+ 89e:	ec f7       	brge	.-6      	; 0x89a <i2c_write+0xe>
+
+	// check value of TWI Status Register. Mask prescaler bits
+	twst = TW_STATUS & 0xF8;
+ 8a0:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7e00b9>
+ 8a4:	98 7f       	andi	r25, 0xF8	; 248
+ 8a6:	81 e0       	ldi	r24, 0x01	; 1
+ 8a8:	98 32       	cpi	r25, 0x28	; 40
+ 8aa:	09 f4       	brne	.+2      	; 0x8ae <i2c_write+0x22>
+ 8ac:	80 e0       	ldi	r24, 0x00	; 0
+	if( twst != TW_MT_DATA_ACK) return 1;
+	return 0;
+
+}/* i2c_write */
+ 8ae:	08 95       	ret
+
+000008b0 <__tablejump2__>:
+ 8b0:	ee 0f       	add	r30, r30
+ 8b2:	ff 1f       	adc	r31, r31
+ 8b4:	05 90       	lpm	r0, Z+
+ 8b6:	f4 91       	lpm	r31, Z
+ 8b8:	e0 2d       	mov	r30, r0
+ 8ba:	09 94       	ijmp
+
+000008bc <_exit>:
+ 8bc:	f8 94       	cli
+
+000008be <__stop_program>:
+ 8be:	ff cf       	rjmp	.-2      	; 0x8be <__stop_program>
